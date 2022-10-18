@@ -98,6 +98,14 @@ describe('global functions', ()=> {
     const rooms = [room, room2]
     expect(avaliableRooms(rooms, '20220512', '20220513')).toContainEqual(room2)
   })
+   test('avalaible rooms must be return rooms avalaibles', () => {
+    const booking = new Booking({...bookingTemplate})
+    const booking2 = new Booking({...bookingTemplate, checkin:'20220518', checkout:'20220520', name:'Booking2'})
+    const room = new Room({...roomTemplate, bookings:[booking]})
+    const room2 = new Room({...roomTemplate, bookings: [booking2], name:'room2'})
+    const rooms = [room, room2]
+    expect(avaliableRooms(rooms, '20220312', '20220313')).toEqual([room,room2])
+  })
   test('avalaible rooms must return an empty array', () => {
     const booking = new Booking({...bookingTemplate})
     const booking2 = new Booking({...bookingTemplate, checkin:'20220512', checkout:'20220514', name:'Booking2'})
