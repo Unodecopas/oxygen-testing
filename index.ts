@@ -20,11 +20,11 @@ class Room implements iRoom{
   discount: number;
   bookings: Booking[]
 
-  constructor(room: iRoom){
-    this.name = room.name, 
-    this.rate = room.rate,
-    this.discount = room.discount, 
-    this.bookings = room.bookings
+  constructor({name, rate, discount, bookings}: iRoom){
+    this.name = name, 
+    this.rate = rate,
+    this.discount = discount, 
+    this.bookings = bookings
   }
   isOccupied(date: string) {
    for (let i = 0; i <= this.bookings.length ; i++){
@@ -59,13 +59,13 @@ class Booking implements iBooking{
   discount: number;
   room: Room
 
-  constructor(booking: iBooking){
-    this.name = booking.name,
-    this.email = booking.email,
-    this.checkin = booking.checkin,
-    this.checkout = booking.checkout,
-    this.discount = booking.discount, 
-    this.room = booking.room
+  constructor({name, email, checkin, checkout, discount, room}: iBooking){
+    this.name = name,
+    this.email = email,
+    this.checkin = checkin,
+    this.checkout = checkout,
+    this.discount = discount, 
+    this.room = room
   }
 
   getFee(): string {
